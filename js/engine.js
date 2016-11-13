@@ -137,6 +137,10 @@ var Engine = (function(global) {
         }
 
         renderEntities();
+      // Used to discover player/bug collision spots  
+      //ctx.drawImage(Resources.get('images/enemy-bug.png'), 330, 309);
+      //ctx.drawImage(Resources.get('images/enemy-bug.png'), 484, 309);
+      //ctx.drawImage(Resources.get('images/char-boy.png'), 404, 309);
     }
 
     /* This function is called by the render function and is called on each game
