@@ -22,7 +22,8 @@ Enemy.prototype.update = function(dt) {
         // on the line between A - 78 and A + 80, then the bug and
         // the player have touched and the game should reset.
         if (((player.x - 78) <= this.x) && ((player.x + 80)) >= this.x) {
-            reset();
+            player.x = 202;
+            player.y = 392;
         }
     }
     // reset bug to left side of screen, once right side is reached
@@ -65,7 +66,8 @@ Player.prototype.update = function(arrow) {
         this.y = this.y - 83;
         // reseting the game if the player wins
         if (this.y < 60) {
-            reset();
+            this.x = 202;
+            this.y = 392;
         }
         this.arrow = null;
     } else if (this.arrow === 'right' && this.x < 404) {
@@ -94,13 +96,6 @@ var enemyThree = new Enemy(-101, 226, 36);
 allEnemies.push(enemyOne, enemyTwo, enemyThree);
 
 var player = new Player(202, 392);
-
-// Function to reset the player position, called in the
-// event of victory or collision with a bug
-function reset() {
-    player.x = 202;
-    player.y = 392;
-}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
