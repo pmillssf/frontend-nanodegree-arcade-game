@@ -2,7 +2,7 @@
 var Enemy = function(x, y, movement) {
     this.x = x;
     this.y = y;
-    this.movement= movement;
+    this.movement = movement;
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -18,17 +18,17 @@ Enemy.prototype.update = function(dt) {
     this.x = this.x + (this.movement * dt);
 
     if (this.y === player.y) {
-      // If player exisits at point A and a bug exists anywhere
-      // on the line between A - 78 and A + 80, then the bug and
-      // the player have touched and the game should reset.
-      if ( ((player.x - 78) <= this.x) && ((player.x + 80)) >= this.x ){
-        reset();
-      }
-    };
+        // If player exisits at point A and a bug exists anywhere
+        // on the line between A - 78 and A + 80, then the bug and
+        // the player have touched and the game should reset.
+        if (((player.x - 78) <= this.x) && ((player.x + 80)) >= this.x) {
+            reset();
+        }
+    }
     // reset bug to left side of screen, once right side is reached
     if (this.x > 505) {
-      this.x = -101;
-    };
+        this.x = -101;
+    }
 
 
     // You should multiply any movement by the dt parameter
@@ -58,30 +58,27 @@ Player.prototype.handleInput = function(arrow) {
 // Also making sure the avatar is confined to the
 // game screen
 Player.prototype.update = function(arrow) {
-  if (this.arrow === 'left' && this.x > 0) {
-    this.x = this.x - 101;
-    this.arrow = null;
-  }
-  else if (this.arrow === 'up') {
-    this.y = this.y - 83;
-    // reseting the game if the player wins
-    if (this.y < 60) {
-      reset();
-    };
-    this.arrow = null;
-  }
-  else if (this.arrow === 'right' && this.x <404) {
-    this.x = this.x + 101;
-    this.arrow = null;
-  }
-  else if (this.arrow === 'down' && this.y <392) {
-    this.y = this.y + 83;
-    this.arrow = null;
-  }
+    if (this.arrow === 'left' && this.x > 0) {
+        this.x = this.x - 101;
+        this.arrow = null;
+    } else if (this.arrow === 'up') {
+        this.y = this.y - 83;
+        // reseting the game if the player wins
+        if (this.y < 60) {
+            reset();
+        }
+        this.arrow = null;
+    } else if (this.arrow === 'right' && this.x < 404) {
+        this.x = this.x + 101;
+        this.arrow = null;
+    } else if (this.arrow === 'down' && this.y < 392) {
+        this.y = this.y + 83;
+        this.arrow = null;
+    }
 };
 
 Player.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 
@@ -101,9 +98,9 @@ var player = new Player(202, 392);
 // Function to reset the player position, called in the
 // event of victory or collision with a bug
 function reset() {
-  player.x = 202;
-  player.y = 392;
-};
+    player.x = 202;
+    player.y = 392;
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
